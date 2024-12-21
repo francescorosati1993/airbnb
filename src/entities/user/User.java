@@ -2,6 +2,8 @@ package entities.user;
 
 public class User
 {
+    private static Integer idTot;
+    private Integer id;
     private String name;
     private String surname;
     private String email;
