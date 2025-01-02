@@ -110,6 +110,19 @@ public class Abitazione {
 
     public Boolean isDisponibile(LocalDate dataInizio, LocalDate dataFine)
     {
+        for (Prenotazione prenotazione : this.prenotazioni)
+        {
+            LocalDate prenotazioneInizio = prenotazione.getDataInizio();
+            LocalDate prenotazioneFine = prenotazione.getDataFine();
+
+            if (prenotazioneInizio.isBefore(dataFine) && prenotazioneFine.isAfter(dataInizio))
+            {
+                return false;
+            }
+        }
+
+        boolean periodoCoperto = false;
+
         for(Map.Entry<LocalDate, LocalDate> entry : disponibilita.entrySet())
         {
             LocalDate periodoIniziale = entry.getKey();
@@ -117,22 +130,11 @@ public class Abitazione {
 
             if(!(periodoFinale.isBefore(dataInizio) || periodoIniziale.isAfter(dataFine)))
             {
-                return true;
+                periodoCoperto = true;
+                break;
             }
         }
 
-        for (Prenotazione prenotazione : this.prenotazioni)
-        {
-            LocalDate prenotazioneInizio = prenotazione.getDataInizio();
-            LocalDate prenotazioneFine = prenotazione.getDataFine();
-
-            if (dataFine.isBefore(prenotazioneInizio) || dataInizio.isAfter(prenotazioneFine))
-            {
-                return false;
-            }
-        }
-
-
-        return true;
+        return periodoCoperto;
     }
 }

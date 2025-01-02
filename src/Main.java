@@ -25,8 +25,8 @@ public class Main
         );
 
         // Creazione di una prenotazione
-        LocalDate dataInizioDisp = LocalDate.of(2025, 1, 5);
-        LocalDate dataFineDisp = LocalDate.of(2025, 1, 16);
+        LocalDate dataInizioDisp = LocalDate.of(2025, 1, 1);
+        LocalDate dataFineDisp = LocalDate.of(2025, 1, 30);
 
 
         abitazione.aggiungiDisponibilita(dataInizioDisp, dataFineDisp);
