@@ -3,14 +3,16 @@ package entities.user;
 public class User
 {
     private static Integer idTot;
-    private Integer id;
-    private String name;
-    private String surname;
-    private String email;
-    private String address;
+    protected Integer id;
+    protected String name;
+    protected String surname;
+    protected String email;
+    protected String address;
 
     // Costruttore
-    public User(String name, String surname, String email, String address) {
+    public User(String name, String surname, String email, String address)
+    {
+        this.id = idTot++;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -18,41 +20,56 @@ public class User
     }
 
     // Getter e Setter
-    public String getName() {
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getSurname() {
+    public String getSurname()
+    {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(String surname)
+    {
         this.surname = surname;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)
+    {
         this.address = address;
     }
 
     // Metodo per stampare i dettagli
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "User{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
