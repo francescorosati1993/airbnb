@@ -1,6 +1,6 @@
 package entities.user;
 
-import entities.property.Property;
+import entities.property.Abitazione;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.List;
 public class Host extends User
 {
     private String hostCode;
-    private List<Property> properties;
+    private List<Abitazione> abitazioni;
 
     public Host(String name, String surname, String email, String address, String hostCode)
     {
         super(name, surname, email, address);
         this.hostCode = hostCode;
-        this.properties = new ArrayList<>();
+        this.abitazioni = new ArrayList<>();
     }
 
     public String getHostCode()
@@ -27,14 +27,14 @@ public class Host extends User
         this.hostCode = hostCode;
     }
 
-    public List<Property> getProperties()
+    public List<Abitazione> getAbitazioni()
     {
-        return properties;
+        return abitazioni;
     }
 
-    public void setProperties(List<Property> properties)
+    public void setAbitazioni(List<Abitazione> abitazioni)
     {
-        this.properties = properties;
+        this.abitazioni = abitazioni;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Host extends User
     {
         return "Host{" +
                 "hostCode='" + hostCode + '\'' +
-                ", properties=" + properties +
+                ", abitazioni=" + abitazioni +
                 "} " + super.toString();
     }
 
