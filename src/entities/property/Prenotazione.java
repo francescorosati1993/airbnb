@@ -65,4 +65,20 @@ public class Prenotazione
         this.utente = utente;
     }
 
+    public static String creaPrenotazione(User utente, Abitazione abitazione, LocalDate dataInizio, LocalDate dataFine)
+    {
+        if(!abitazione.isDisponibile(dataInizio, dataFine))
+        {
+            return "Abitazione non disponibile";
+        }
+
+        Prenotazione prenotazione = new Prenotazione(dataInizio, dataFine, abitazione, utente);
+
+        utente.aggiungiPrenotazione(prenotazione);
+
+        abitazione.getPrenotazioni().add(prenotazione);
+
+        return "Prenotazione creata con successo!";
+    }
+
 }

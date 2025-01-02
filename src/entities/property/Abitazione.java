@@ -1,6 +1,7 @@
 package entities.property;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class Abitazione {
     private int piano;
     private String codiceHost;
     private Map<LocalDate, LocalDate> disponibilita;
+    private List<Prenotazione> prenotazioni;
 
 
     // Costruttore
@@ -28,6 +30,7 @@ public class Abitazione {
         this.piano = piano;
         this.codiceHost = codiceHost;
         this.disponibilita = new HashMap<>();
+        this.prenotazioni = new ArrayList<>();
     }
 
     // Getter e Setter
@@ -92,8 +95,44 @@ public class Abitazione {
         this.disponibilita = disponibilita;
     }
 
+    public List<Prenotazione> getPrenotazioni() {
+        return prenotazioni;
+    }
+
+    public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+        this.prenotazioni = prenotazioni;
+    }
+
     public void aggiungiDisponibilita(LocalDate inizio, LocalDate fine)
     {
         disponibilita.put(inizio, fine);
+    }
+
+    public Boolean isDisponibile(LocalDate dataInizio, LocalDate dataFine)
+    {
+        for(Map.Entry<LocalDate, LocalDate> entry : disponibilita.entrySet())
+        {
+            LocalDate periodoIniziale = entry.getKey();
+            LocalDate periodoFinale = entry.getValue();
+
+            if(!(periodoFinale.isBefore(dataInizio) || periodoIniziale.isAfter(dataFine)))
+            {
+                return true;
+            }
+        }
+
+        for (Prenotazione prenotazione : this.prenotazioni)
+        {
+            LocalDate prenotazioneInizio = prenotazione.getDataInizio();
+            LocalDate prenotazioneFine = prenotazione.getDataFine();
+
+            if (dataFine.isBefore(prenotazioneInizio) || dataInizio.isAfter(prenotazioneFine))
+            {
+                return false;
+            }
+        }
+
+
+        return true;
     }
 }

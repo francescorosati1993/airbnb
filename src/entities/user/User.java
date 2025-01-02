@@ -73,6 +73,16 @@ public class User
         this.address = address;
     }
 
+    public List<Prenotazione> getPrenotazioni()
+    {
+        return prenotazioni;
+    }
+
+    public void setPrenotazioni(List<Prenotazione> prenotazioni)
+    {
+        this.prenotazioni = prenotazioni;
+    }
+
     // Metodo per stampare i dettagli
     @Override
     public String toString()
