@@ -1,13 +1,19 @@
 package entities.user;
 
+import entities.property.Prenotazione;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User
 {
-    private static Integer idTot;
+    private static Integer idTot = 0;
     protected Integer id;
     protected String name;
     protected String surname;
     protected String email;
     protected String address;
+    protected List<Prenotazione> prenotazioni;
 
     // Costruttore
     public User(String name, String surname, String email, String address)
@@ -17,6 +23,7 @@ public class User
         this.surname = surname;
         this.email = email;
         this.address = address;
+        this.prenotazioni = new ArrayList<>();
     }
 
     // Getter e Setter
@@ -77,4 +84,12 @@ public class User
                 ", address='" + address + '\'' +
                 '}';
     }
+
+    //Metodi User
+    public void aggiungiPrenotazione(Prenotazione prenotazione)
+    {
+        prenotazioni.add(prenotazione);
+        System.out.println("Prenotazione aggiunta");
+    }
+
 }

@@ -1,22 +1,27 @@
 package entities.property;
 
+import entities.user.User;
+
 import java.time.LocalDate;
 
-public class Prenotazione {
-    private int id;
+public class Prenotazione
+{
+    private static Integer idTot = 0;
+    private Integer id;
     private LocalDate dataInizio;
     private LocalDate dataFine;
-    private int idAbitazione;
-    private int idUtente;
+    private Abitazione abitazione;
+    private User utente;
 
     // Costruttore
-    public Prenotazione(int id, LocalDate dataInizio, LocalDate dataFine,
-                        int idAbitazione, int idUtente) {
-        this.id = id;
+    public Prenotazione(LocalDate dataInizio, LocalDate dataFine,
+                        Abitazione abitazione, User utente)
+    {
+        this.id = idTot++;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
-        this.idAbitazione = idAbitazione;
-        this.idUtente = idUtente;
+        this.abitazione = abitazione;
+        this.utente = utente;
     }
 
     // Getter e Setter
@@ -44,19 +49,20 @@ public class Prenotazione {
         this.dataFine = dataFine;
     }
 
-    public int getIdAbitazione() {
-        return idAbitazione;
+    public Abitazione getAbitazione() {
+        return abitazione;
     }
 
-    public void setIdAbitazione(int idAbitazione) {
-        this.idAbitazione = idAbitazione;
+    public void setAbitazione(Abitazione abitazione) {
+        this.abitazione = abitazione;
     }
 
-    public int getIdUtente() {
-        return idUtente;
+    public User getUtente() {
+        return utente;
     }
 
-    public void setIdUtente(int idUtente) {
-        this.idUtente = idUtente;
+    public void setUtente(User utente) {
+        this.utente = utente;
     }
+
 }

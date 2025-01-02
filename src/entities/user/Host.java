@@ -4,16 +4,17 @@ import entities.property.Abitazione;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Host extends User
 {
     private String hostCode;
     private List<Abitazione> abitazioni;
 
-    public Host(String name, String surname, String email, String address, String hostCode)
+    public Host(String name, String surname, String email, String address)
     {
         super(name, surname, email, address);
-        this.hostCode = hostCode;
+        this.hostCode = String.valueOf(UUID.randomUUID());
         this.abitazioni = new ArrayList<>();
     }
 
@@ -36,6 +37,8 @@ public class Host extends User
     {
         this.abitazioni = abitazioni;
     }
+
+
 
     @Override
     public String toString()
